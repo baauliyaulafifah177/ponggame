@@ -20,8 +20,14 @@ public class scriptball1 : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other) {
         if(other.collider.name=="DindingKanan"||other.collider.name=="DindingKiri"){
-            GetComponent<Transform>().position = new Vector2 (0,0);
+            StartCoroutine(jeda());
         }    
     }
     
+    IEnumerator jeda(){
+        sesuatu.velocity = Vector2.zero;
+        sesuatu.GetComponent<Transform>().position = Vector2.zero;
+        yield return new WaitForSeconds(1);
+        sesuatu.velocity = new Vector2 (-1,-1)*speed;
+    }
 }
