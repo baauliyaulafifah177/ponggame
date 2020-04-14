@@ -12,7 +12,11 @@ public class scriptball1 : MonoBehaviour
 
     void Start()
     {
-        sesuatu.velocity = new Vector2 (-1,-1)*speed;
+        int x = Random.Range(0,2) * 2 - 1; //nilai x bisa bernilai 0 atau 1
+        int y = Random.Range(0,2) * 2 - 1; //nilai x bisa bernilai 0 atau 1
+        int speed = Random.Range(20, 26); //nilai speed antara 20-25
+        sesuatu.velocity = new Vector2 (x, y)*speed;
+        sesuatu.GetComponent<Transform>().position = Vector2.zero;
         animtr.SetBool("IsMove", true);
     }
 
@@ -28,16 +32,21 @@ public class scriptball1 : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other) {
         if(other.collider.name=="DindingKanan"||other.collider.name=="DindingKiri"){
-            StartCoroutine(jeda());
+            StartCoroutine(jeda()); //untuk pindah ke tengah
         }    
     }
     
     IEnumerator jeda(){
-        sesuatu.velocity = Vector2.zero;
-        animtr.SetBool("IsMove", false);
-        sesuatu.GetComponent<Transform>().position = Vector2.zero;
+        sesuatu.velocity = Vector2.zero; //menghentikan bola
+        animtr.SetBool("IsMove", false); //mengubah animasi ke api berhenti
+        sesuatu.GetComponent<Transform>().position = Vector2.zero; //mengubah posisi bola
+
         yield return new WaitForSeconds(1);
-        sesuatu.velocity = new Vector2 (-1,-1)*speed;
-        animtr.SetBool("IsMove", true);
+
+        int x = Random.Range(0,2) * 2 - 1; //nilai x bisa bernilai 0 atau 1
+        int y = Random.Range(0,2) * 2 - 1; //nilai x bisa bernilai 0 atau 1
+        int speed = Random.Range(20, 26); //nilai speed antara 20-25
+        sesuatu.velocity = new Vector2 (-1,-1)*speed; //mengatur kecepatan
+        animtr.SetBool("IsMove", true); //mengubah animasi ke api bergerak
     }
 }
