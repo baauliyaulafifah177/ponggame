@@ -7,8 +7,9 @@ public class scriptball1 : MonoBehaviour
     public int speed = 30;
     // Start is called before the first frame update
     public Rigidbody2D sesuatu;
-
+    public GameObject masterScript;
     public Animator animtr;
+    public AudioSource hitEffect;
 
     void Start()
     {
@@ -32,8 +33,12 @@ public class scriptball1 : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D other) {
         if(other.collider.name=="DindingKanan"||other.collider.name=="DindingKiri"){
+            masterScript.GetComponent<ScoringScript>().UpdateScore(other.collider.name);
             StartCoroutine(jeda()); //untuk pindah ke tengah
         }    
+        if(other.collider.tag=="Player"){
+            hitEffect.Play();
+        }
     }
     
     IEnumerator jeda(){

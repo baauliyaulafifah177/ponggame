@@ -53,9 +53,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BGMusicScript.cs" />
+     <Compile Include="Assets\EndingScript.cs" />
      <Compile Include="Assets\kananscript.cs" />
      <Compile Include="Assets\kiriscript.cs" />
      <Compile Include="Assets\PlayScript.cs" />
+     <Compile Include="Assets\ScoringScript.cs" />
      <Compile Include="Assets\scriptball1.cs" />
      <Compile Include="Assets\Timescript.cs" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
